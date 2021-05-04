@@ -3,10 +3,6 @@ name: "Continuous Integration"
 on:
   pull_request:
   push:
-    branches:
-      - '[0-9]+.[0-9]+.x'
-      - 'refs/pull/*'
-    tags:
 
 jobs:
   matrix:
@@ -24,7 +20,7 @@ jobs:
     needs: [matrix]
     runs-on: ${{ matrix.operatingSystem }}
     services:
-      redis:
+      mongo:
         image: mongo
     strategy:
       fail-fast: false
